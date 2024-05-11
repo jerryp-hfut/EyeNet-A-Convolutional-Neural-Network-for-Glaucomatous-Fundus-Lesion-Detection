@@ -11,6 +11,7 @@ The model was trained using the `BCEWithLogitsLoss` loss function and the `Adam`
 ![avatar](demo/AccuracyCurve.png)
 <br />
 The team then tested BEH-179, a normal fundus image from the dataset, using a pre-trained model with 96.59% accuracy. The output tensor of each convolutional layer was converted into an image for visualization and analysis, and the team found that the model effectively learned multiple features in the fundus optic disc and output the correct result "glaucoma negative".<br />
+                        
 ![avatar](demo/kernal1.png)
 ![avatar](demo/kernal2.png)
 ![avatar](demo/kernal3.png)
