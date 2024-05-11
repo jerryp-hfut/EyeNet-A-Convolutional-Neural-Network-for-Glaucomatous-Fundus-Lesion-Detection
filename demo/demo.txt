@@ -1,1 +1,1 @@
-demo pics here
+This folder contains a complete image from the dataset, the resizedROI image is processed using the getROI() function int utils/dataloader.py
