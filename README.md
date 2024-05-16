@@ -19,3 +19,37 @@ The team then tested BEH-179, a normal fundus image from the dataset, using a pr
 Optic nerve, vitreous and fundus optic disc features are extracted as shown in Fig.
 ## Innovation and Impact
 The innovation of this study is the application of deep learning techniques to the automated diagnosis of glaucoma, which optimizes the model inputs through data augmentation techniques and significantly improves the training efficiency and diagnostic accuracy. Although the model needs further validation and optimization in practical clinical applications, its potential to improve the early diagnosis rate of glaucoma is obvious, and it is expected to provide effective technical support to alleviate the problem of glaucoma screening in areas with insufficient medical resources.
+<br />
+## How to use?
+### GPU check
+Terminal: `python testGPU.py`<br />
+If the output is like:<br />
+2.3.0+cu118<br />
+11.8<br />
+True<br />
+,the GPU is available. (the torch and CUDA version NOT have to be the same)<br />
+
+### Train the model
+Make sure the dataset is in ./data, and check the modules are all installed correctly.<br />
+The dataset tree should be like:<br />
+<br />
+data<br />
+  |---archive<br />
+         |---test<br />
+              |---0<br />
+              |---1<br />
+         |---train<br />
+              |---0<br />
+              |---1<br />
+         |---val<br />
+              |---0<br />
+              |---1<br />
+Then, if it's the first time that you train this model, you should open train.py, find `train(m, n)` in the last line and change it to `train(0, n)`.(recommendation: n=10)<br />
+Therefore, if it's NOT the first time(you have the pre-trained model "check_point.pth"), change `train(m, n)` into `train(pre_epochs, end_epochs)`.<br />
+
+Lastly, after all these works are done, <br />
+Terminal: `python train.py`<br />
+
+### Use the model to diagnose
+Terminal: `python diagnosis.py`<br />
+Then it will randomly choose 8 figs from ./data/archive/val, and it's four pictures from val/1 and another four from val/0.<br />
