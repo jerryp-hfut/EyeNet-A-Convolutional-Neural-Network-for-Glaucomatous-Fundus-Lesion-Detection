@@ -24,26 +24,16 @@ The innovation of this study is the application of deep learning techniques to t
 ### GPU check
 Terminal: `python testGPU.py`<br />
 If the output is like:<br />
+<br>
 2.3.0+cu118<br />
 11.8<br />
 True<br />
+<br>
 ,the GPU is available. (the torch and CUDA version NOT have to be the same)<br />
 
 ### Train the model
 Make sure the dataset is in ./data, and check the modules are all installed correctly.<br />
-The dataset tree should be like:<br />
-<br />
-`data
-  |---archive
-         |---test
-              |---0
-              |---1
-         |---train
-              |---0
-              |---1
-         |---val
-              |---0
-              |---1`
+Dataset: [Fundus Glaucoma Detection Data [PyTorch format]](https://www.kaggle.com/datasets/sabari50312/fundus-pytorch "Fundus Glaucoma Detection Data [PyTorch format]")<br>
 Then, if it's the first time that you train this model, you should open train.py, find `train(m, n)` in the last line and change it to `train(0, n)`.(recommendation: n=10)<br />
 Therefore, if it's NOT the first time(you have the pre-trained model "check_point.pth"), change `train(m, n)` into `train(pre_epochs, end_epochs)`.<br />
 
