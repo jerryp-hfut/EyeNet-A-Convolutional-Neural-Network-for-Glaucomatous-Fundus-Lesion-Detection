@@ -33,17 +33,17 @@ True<br />
 Make sure the dataset is in ./data, and check the modules are all installed correctly.<br />
 The dataset tree should be like:<br />
 <br />
-data<br />
-  |---archive<br />
-         |---test<br />
-              |---0<br />
-              |---1<br />
-         |---train<br />
-              |---0<br />
-              |---1<br />
-         |---val<br />
-              |---0<br />
-              |---1<br />
+`data
+  |---archive
+         |---test
+              |---0
+              |---1
+         |---train
+              |---0
+              |---1
+         |---val
+              |---0
+              |---1`
 Then, if it's the first time that you train this model, you should open train.py, find `train(m, n)` in the last line and change it to `train(0, n)`.(recommendation: n=10)<br />
 Therefore, if it's NOT the first time(you have the pre-trained model "check_point.pth"), change `train(m, n)` into `train(pre_epochs, end_epochs)`.<br />
 
