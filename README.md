@@ -15,8 +15,11 @@ The team then tested BEH-179, a normal fundus image from the dataset, using a pr
 ![avatar](demo/kernal1.png)
 ![avatar](demo/kernal2.png)
 ![avatar](demo/kernal3.png)
+![avatar](demo/gradcam.jpg)
 <br />
-Optic nerve, vitreous and fundus optic disc features are extracted as shown in Fig.
+Optic nerve, vitreous and fundus optic disc features are extracted as shown in Fig1-3, and the fig4 shows the Grad-CAM picture.
+Also, the Confusion Matrix is showned down here:<br>
+![avatar](demo/confusionMat.jpg)
 ## Innovation and Impact
 The innovation of this study is the application of deep learning techniques to the automated diagnosis of glaucoma, which optimizes the model inputs through data augmentation techniques and significantly improves the training efficiency and diagnostic accuracy. Although the model needs further validation and optimization in practical clinical applications, its potential to improve the early diagnosis rate of glaucoma is obvious, and it is expected to provide effective technical support to alleviate the problem of glaucoma screening in areas with insufficient medical resources.
 <br />
