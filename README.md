@@ -39,7 +39,11 @@ Therefore, if it's NOT the first time(you have the pre-trained model "check_poin
 
 Lastly, after all these works are done, <br />
 Terminal: `python train.py`<br />
+this will show you the ROC curve, PR curve, Confusion Matrix, Grad-CAM and t-SNE map.
 
 ### Use the model to diagnose
 Terminal: `python diagnosis.py`<br />
 Then it will randomly choose 8 figs from ./data/archive/val, and it's four pictures from val/1 and another four from val/0.<br />
+
+### Visualize the model's OUTPUT and its ability
+Terminal: `python visualize.py`<br />
