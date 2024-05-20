@@ -47,3 +47,4 @@ Then it will randomly choose 8 figs from ./data/archive/val, and it's four pictu
 
 ### Visualize the model's OUTPUT and its ability
 Terminal: `python visualize.py`<br />
+this will show you the ROC and PR curves, Confusion Matrix, Grad-CAM and the t-SNE map.
