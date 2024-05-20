@@ -1,28 +1,3 @@
-
-'''
- *                             _ooOoo_
- *                            o8888888o
- *                            88" . "88
- *                            (| -_- |)
- *                            O\  =  /O
- *                         ____/`---'\____
- *                       .'  \\|     |//  `.
- *                      /  \\|||  :  |||//  \
- *                     /  _||||| -:- |||||-  \
- *                     |   | \\\  -  /// |   |
- *                     | \_|  ''\---/''  |   |
- *                     \  .-\__  `-`  ___/-. /
- *                   ___`. .'  /--.--\  `. . __
- *                ."" '<  `.___\_<|>_/___.'  >'"".
- *               | | :  `- \`.;`\ _ /`;.`/ - ` : | |
- *               \  \ `-.   \_ __\ /__ _/   .-` /  /
- *          ======`-.____`-.___\_____/___.-`____.-'======
- *                             `=---='
- *          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *                     佛祖保佑        永无BUG
-'''
-
-
 import torch
 import os
 import torch.nn as nn
@@ -35,10 +10,11 @@ from utils.dataLoader import GlaucomaDataset
 
 import predict
 
-learning_rate = 0.01
+learning_rate = 0.00001
 # 定义数据转换
 transform = transforms.Compose([
     transforms.ToTensor(),  # 转换为PyTorch张量
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
 # 数据集路径
@@ -52,7 +28,7 @@ train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 
 
 md = model.EyeNet().cuda()
-criterion = nn.BCELoss().cuda()
+criterion = nn.BCEWithLogitsLoss().cuda()
 optimizer = optim.Adam(md.parameters(),lr = learning_rate)
 
 def train(pre_epochs, epochs):
@@ -66,9 +42,9 @@ def train(pre_epochs, epochs):
         print("epoch=",epoch)
         for i,(features,label) in enumerate(train_loader):
             optimizer.zero_grad()
-            outputs = md(features)
+            outputs = md(features.cuda())
             outputs = outputs.squeeze()
-            loss = criterion(outputs, label.float())  # 将标签转换为浮点型 CUDA出错位置0
+            loss = criterion(outputs, label.float().cuda())
             loss.backward()
             optimizer.step()
             if (i+1) % 10 == 0:
@@ -93,4 +69,4 @@ def train(pre_epochs, epochs):
     plt.show()
     
 if __name__ == '__main__':
-    train(0, 200)
+    train(0, 100)
